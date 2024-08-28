@@ -2,7 +2,7 @@
 
 # VENV
 
-Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass (For windows)
 venv\Scripts\activate
 
 pip install pyautogui
