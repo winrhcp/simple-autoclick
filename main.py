@@ -3,8 +3,6 @@ import time
 import argparse
 
 def main():
-    print("Soft created by: https://t.me/hidden_coding\n")
-
     parser = argparse.ArgumentParser()
     parser.add_argument('-a', '--action', type=int, help='Action to perform')
     action = parser.parse_args().action
@@ -24,23 +22,17 @@ def main():
             print("Program stopped.")
 
     if action == 1:
-        # resolution
-        # screen_width, screen_height = pyautogui.size()
-        # print("screen_width : {screen_width}")
-        # print("screen_height : {screen_height}")
-
+        click_target = int(input("Click target : "))
         # FIX position
         target_x = -1183
         target_y = 453
 
         interval = 0.1
 
-        clicks = 1900
-
         # wait before start
         time.sleep(1)
 
-        for i in range(clicks):
+        for i in range(click_target):
             pyautogui.click(target_x, target_y)
             time.sleep(interval)
 
