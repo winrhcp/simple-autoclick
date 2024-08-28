@@ -12,3 +12,4 @@ python -m venv venv
 # UPDATE variable 
 
 - target_x and target_y 
+- clicks count
