@@ -44,7 +44,7 @@ class AutoClicker:
         windows = gw.getWindowsWithTitle(self.window_title)
         if not windows:
             self.logger.log(
-                f"No window found with title: {self.window_title}. Open the Blum web application and restart the script")
+                f"No window found with title: {self.window_title}. Open the application and restart the script")
             return
         print(windows[0])
         window = windows[0]
@@ -59,11 +59,14 @@ class AutoClicker:
         window.activate()
 
         click_count = 0
+        percent_log_threshold = 10 
+        next_log_count = (self.click_target * percent_log_threshold) / 100
         with mss.mss() as sct:
             grave_key_code = 41
             keyboard.add_hotkey(grave_key_code, self.toggle_script)
             while True:
                 if click_count >= self.click_target:
+                        self.logger.log(f"Success! Finish {click_count} clicked")
                         break
                 if self.running:
                     monitor = {
@@ -76,7 +79,10 @@ class AutoClicker:
                     cY = monitor["top"] + monitor["height"] // 2
                     self.click_at(cX, cY)
                     click_count += 1
-                    self.logger.log(f'Clicked count: {click_count}')
+
+                    if click_count >= next_log_count:
+                        self.logger.log(f"Loading => {int((click_count / self.click_target) * 100)}%")
+                        next_log_count += (self.click_target * percent_log_threshold) / 100
 
                     time.sleep(0.1)
 
