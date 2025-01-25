@@ -84,7 +84,7 @@ class AutoClicker:
                         self.logger.log(f"Loading => {int((click_count / self.click_target) * 100)}%")
                         next_log_count += (self.click_target * percent_log_threshold) / 100
 
-                    time.sleep(0.1)
+                    time.sleep(0.04)
 
 
 if __name__ == "__main__":
@@ -97,7 +97,7 @@ if __name__ == "__main__":
         click_target = answer
 
     logger.log('After starting the mini-game, press the "`" key on the keyboard')
-    auto_clicker = AutoClicker("TelegramDesktop", click_target, logger)
+    auto_clicker = AutoClicker("Mini App: Collection Hunt", click_target, logger)
     try:
         auto_clicker.click()
     except Exception as e:
